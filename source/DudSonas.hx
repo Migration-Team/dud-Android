@@ -118,7 +118,8 @@ class DudSonas extends MusicBeatState
 		}
 
 		var scoreText:FlxText;
-		scoreText = new FlxText(20, 35, 0, "Press R to get a new dud", 36);
+		var textST = #if android "Press C to get a new dud" #else "Press R to get a new dud" #end;
+		scoreText = new FlxText(20, 35, 0, textST, 36);
 		scoreText.setFormat(Paths.font("phantommuff.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.borderSize = 1.25;
 		scoreText.scrollFactor.set(0.05, 0.05);
@@ -129,6 +130,10 @@ class DudSonas extends MusicBeatState
 		dostuff();
 
 		camFollowPos.setPosition((FlxG.mouse.screenX + 720) / 2, (FlxG.mouse.screenY + 1280) / 2);
+		
+		#if android
+       	addVirtualPad(NONE, A_B_C);
+        #end
 
 		super.create();
 	}
@@ -149,7 +154,7 @@ class DudSonas extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
-			if(FlxG.keys.justPressed.R) {
+			if(FlxG.keys.justPressed.R #if android || _virtualpad.buttonC.justPressed #end) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = FlxG.random.int(0, allduds.length - 1);
 				dostuff();

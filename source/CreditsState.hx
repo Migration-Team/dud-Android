@@ -144,6 +144,10 @@ class CreditsState extends MusicBeatState
         namebg.y = namebgy;
         nameText.x = namebgx + 10;
         nameText.y = namebgy + 5;
+        
+        #if android
+       	addVirtualPad(UP_DOWN, A_B);
+        #end
 
 		super.create();
 	}

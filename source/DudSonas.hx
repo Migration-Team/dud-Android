@@ -49,11 +49,9 @@ class DudSonas extends MusicBeatState
 
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
-		
-		var paths = Paths.image('dudsonas/');
-		
-		for (file in FileSystem.readDirectory(paths)) {
-			var path = haxe.io.Path.join([paths, file]);
+
+		for (file in FileSystem.readDirectory('assets/images/dudsonas/')) {
+			var path = haxe.io.Path.join(['assets/images/dudsonas/', file]);
 			if (!sys.FileSystem.isDirectory(path)) {
 				allduds.push(file);
 			}
@@ -93,7 +91,7 @@ class DudSonas extends MusicBeatState
 
 		for (i in 0...allduds.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dudsonas/' + allduds[i]));
+			var menuItem:FlxSprite = new FlxSprite().loadGraphic('assets/images/dudsonas/' + allduds[i]);
 			menuItem.ID = i;
 			menuItems.add(menuItem);
 			menuItem.scale.x = 200 / menuItem.width;
@@ -120,8 +118,7 @@ class DudSonas extends MusicBeatState
 		}
 
 		var scoreText:FlxText;
-		var textST = #if android "Press C to get a new dud" #else "Press R to get a new dud" #end;
-		scoreText = new FlxText(20, 35, 0, textST, 36);
+		scoreText = new FlxText(20, 35, 0, "Press R to get a new dud", 36);
 		scoreText.setFormat(Paths.font("phantommuff.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.borderSize = 1.25;
 		scoreText.scrollFactor.set(0.05, 0.05);
@@ -132,10 +129,6 @@ class DudSonas extends MusicBeatState
 		dostuff();
 
 		camFollowPos.setPosition((FlxG.mouse.screenX + 720) / 2, (FlxG.mouse.screenY + 1280) / 2);
-		
-		#if android
-       	addVirtualPad(NONE, A_B_C);
-        #end
 
 		super.create();
 	}
@@ -156,7 +149,7 @@ class DudSonas extends MusicBeatState
 
 		if (!selectedSomethin)
 		{
-			if(FlxG.keys.justPressed.R #if android || _virtualpad.buttonC.justPressed #end) {
+			if(FlxG.keys.justPressed.R) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = FlxG.random.int(0, allduds.length - 1);
 				dostuff();

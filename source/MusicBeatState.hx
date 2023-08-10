@@ -31,8 +31,8 @@ class MusicBeatState extends FlxUIState
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
-
-	#if android
+	
+		#if android
 	var _virtualpad:FlxVirtualPad;
 	var androidc:AndroidControls;
 	var trackedinputsUI:Array<FlxActionInput> = [];
@@ -97,15 +97,7 @@ class MusicBeatState extends FlxUIState
 		_virtualpad.cameras = [camcontrol];
 	}
 	#end
-	
-	override function destroy() {
-		#if android
-		controls.removeFlxInput(trackedinputsNOTES);
-		controls.removeFlxInput(trackedinputsUI);
-		#end
 
-		super.destroy();
-	}
 	override function create() {
 		camBeat = FlxG.camera;
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
@@ -142,6 +134,15 @@ class MusicBeatState extends FlxUIState
 		if(FlxG.save.data != null) FlxG.save.data.fullscreen = FlxG.fullscreen;
 
 		super.update(elapsed);
+	}
+	
+	override function destroy() {
+		#if android
+		controls.removeFlxInput(trackedinputsNOTES);
+		controls.removeFlxInput(trackedinputsUI);
+		#end
+
+		super.destroy();
 	}
 
 	private function updateSection():Void

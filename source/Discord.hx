@@ -1,11 +1,14 @@
 package backend;
 
+#if desktop
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 import lime.app.Application;
+#end
 
 class DiscordClient
 {
+	#if desktop
 	public static var isInitialized:Bool = false;
 	private static var _defaultID:String = "863222024192262205";
 	public static var clientID(default, set):String = _defaultID;
@@ -129,4 +132,5 @@ class DiscordClient
 	
 	public static function resetClientID()
 		clientID = _defaultID;
+	#end
 }

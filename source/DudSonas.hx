@@ -91,7 +91,7 @@ class DudSonas extends MusicBeatState
 
 		for (i in 0...allduds.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite().loadGraphic('assets/images/dudsonas/' + allduds[i]);
+			var menuItem:FlxSprite = new FlxSprite().loadGraphic(Paths.image('dudsonas/' + allduds[i]));
 			menuItem.ID = i;
 			menuItems.add(menuItem);
 			menuItem.scale.x = 200 / menuItem.width;

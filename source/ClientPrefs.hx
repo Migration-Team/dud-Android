@@ -41,7 +41,8 @@ class ClientPrefs {
 	public static var badWindow:Int = 135;
 	public static var safeFrames:Float = 10;
 	public static var dudPause:Bool = false;
-
+	public static var hitboxmode:String = 'Classic';  //starting new way to change between hitboxes yay
+	public static var hitboxalpha:Float = 0.2; //someone request this lol
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
 		//Key Bind, Name for ControlsSubState
@@ -110,6 +111,8 @@ class ClientPrefs {
 		FlxG.save.data.comboStacking = comboStacking;
 
 		FlxG.save.data.dudPause = dudPause;
+		FlxG.save.data.hitboxmode = hitboxmode;
+		FlxG.save.data.hitboxalpha = hitboxalpha;
 	
 		FlxG.save.flush();
 
@@ -221,6 +224,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.pauseMusic != null) {
 			pauseMusic = FlxG.save.data.pauseMusic;
+		}
+		if(FlxG.save.data.hitboxmode != null) {
+			hitboxmode = FlxG.save.data.hitboxmode;
+		}
+		if(FlxG.save.data.hitboxalpha != null) {
+			hitboxalpha = FlxG.save.data.hitboxalpha;
 		}
 		
 		// flixel automatically saves your volume!

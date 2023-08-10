@@ -39,6 +39,10 @@ class OptionsState extends MusicBeatState
 	var substate = false;
 
 	function openSelectedSubstate(label:String) {
+		#if android
+		removeVirtualPad();
+		#end
+		
 		switch(label) {
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
@@ -140,11 +144,13 @@ class OptionsState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
 			}
-		
+			
+			#if !android
 			if (FlxG.mouse.justPressed) {
 				hide(false);
 				openSelectedSubstate(options[curSelected]);
 			}
+			#end
 			
 			#if android
 			if (_virtualpad.buttonX.justPressed) {

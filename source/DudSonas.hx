@@ -50,6 +50,8 @@ class DudSonas extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
+		var paths = 'assets/' + Paths.image('dudsonas/');
+		
 		for (file in FileSystem.readDirectory('assets/images/dudsonas/')) {
 			var path = haxe.io.Path.join(['assets/images/dudsonas/', file]);
 			if (!sys.FileSystem.isDirectory(path)) {

@@ -72,7 +72,7 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
-import src.VideoHandler;
+import VideoHandler;
 #end
 
 using StringTools;

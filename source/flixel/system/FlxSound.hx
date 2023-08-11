@@ -1,4 +1,3 @@
-#if (flixel < "5.3.0")
 package flixel.system;
 
 import flash.events.Event;
@@ -597,7 +596,7 @@ class FlxSound extends FlxBasic
 			@:privateAccess
 			if(_channel.__source != null)
 			{
-				#if desktop
+				#if cpp
 				@:privateAccess
 				this._channel.__source.__backend.setPitch(_pitch);
 				// trace('changing $name pitch new $_pitch');
@@ -798,4 +797,3 @@ class FlxSound extends FlxBasic
 		]);
 	}
 }
-#end

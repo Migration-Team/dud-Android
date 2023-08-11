@@ -183,3 +183,4 @@ class DudSonas extends MusicBeatState
 		});
 	}
 }
+}

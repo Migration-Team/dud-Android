@@ -54,8 +54,9 @@ class DudSonas extends MusicBeatState
 		
 		for (file in FileSystem.readDirectory(Paths.image('dudsonas/'))) 
 		{
-			var path = Paths.image('dudsonas/', file));
-			if (!sys.FileSystem.isDirectory(path)) {
+			var path = Paths.image('dudsonas/', file);
+			if (!sys.FileSystem.isDirectory(path)) 
+			{
 				allduds.push(file);
 			}
 		}

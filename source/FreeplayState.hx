@@ -240,7 +240,7 @@ class FreeplayState extends MusicBeatState
 		diffstuff();
 		
 		#if android
-		addVirtualPad(UP_DOWN, A_B_X_Y);
+		addVirtualPad(NONE, A_B_E);
 		#end
 
 		super.create();
@@ -306,7 +306,7 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
-		var space = FlxG.keys.justPressed.SPACE #if android || _virtualpad.buttonX.pressed #end;
+		var space = FlxG.keys.justPressed.SPACE #if android || _virtualpad.buttonE.pressed #end;
 
 		var shiftMult:Int = 1;
 		

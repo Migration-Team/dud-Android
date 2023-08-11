@@ -164,6 +164,7 @@ class DudSonas extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
 			}
+		}
 
 		super.update(elapsed);
 	}
@@ -182,5 +183,4 @@ class DudSonas extends MusicBeatState
 			}
 		});
 	}
-}
 }

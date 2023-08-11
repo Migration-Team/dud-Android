@@ -30,7 +30,7 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Controls', 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
+	var options:Array<String> = ['Controls', #if android 'Hitbox Settings', #end 'Adjust Delay and Combo', 'Graphics', 'Visuals and UI', 'Gameplay'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;
@@ -52,10 +52,10 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.VisualsUISubState());
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
+			case 'Hitbox Settings':
+				openSubState(new options.HitboxSettingsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
-			case 'Android':
-				openSubState(new options.HitboxSettingsSubState());
 		}
 	}
 
@@ -105,7 +105,7 @@ class OptionsState extends MusicBeatState
 		ClientPrefs.saveSettings();
 		
 		#if android
-		addVirtualPad(UP_DOWN, A_B_X_Y);
+		addVirtualPad(UP_DOWN, A_B_E);
 		#end
 
 		super.create();
@@ -155,11 +155,8 @@ class OptionsState extends MusicBeatState
 			#end
 			
 			#if android
-			if (_virtualpad.buttonX.justPressed) {
+			if (_virtualpad.buttonE.justPressed) {
 				MusicBeatState.switchState(new android.AndroidControlsMenu());
-			}
-			if (_virtualpad.buttonY.justPressed) {
-				openSelectedSubstate('Android');
 			}
 			#end
 		}

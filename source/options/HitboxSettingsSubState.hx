@@ -33,6 +33,7 @@ using StringTools;
 
 class HitboxSettingsSubState extends BaseOptionsMenu
 {
+	
 	public function new()
 	{
 		title = 'Hitbox Settings';

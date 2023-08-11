@@ -54,6 +54,8 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new options.NoteOffsetState());
+			case 'Android':
+				openSubState(new options.HitboxSettingsSubState());
 		}
 	}
 
@@ -157,8 +159,7 @@ class OptionsState extends MusicBeatState
 				MusicBeatState.switchState(new android.AndroidControlsMenu());
 			}
 			if (_virtualpad.buttonY.justPressed) {
-				removeVirtualPad();
-				openSubState(new android.HitboxSettingsSubState());
+				openSelectedSubstate('Android');
 			}
 			#end
 		}

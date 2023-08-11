@@ -28,16 +28,28 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 import options.BaseOptionsMenu;
 import options.Option;
+import flixel.addons.display.FlxBackdrop;
 import openfl.Lib;
 
 using StringTools;
 
 class HitboxSettingsSubState extends BaseOptionsMenu
 {
+	var backdrop:FlxBackdrop;
 	public function new()
 	{
 		title = 'Hitbox Settings';
 		rpcTitle = 'Hitbox Settings Menu'; //hi, you can ask what is that, i will answer it's all what you needed lol.
+		
+		var bg:FlxSprite = new FlxSprite(-218, -321).loadGraphic(Paths.image('menu/gradient'));
+		bg.scrollFactor.set();
+		bg.screenCenter();
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		add(bg);
+		
+		add(backdrop = new FlxBackdrop(Paths.image('menu/grid')));
+		backdrop.scrollFactor.set(0.2, 0.2);
+		backdrop.velocity.set(20, 20);
 
 		var option:Option = new Option('Hitbox Mode:',
 			"Choose your Hitbox Style!  -mariomaster",

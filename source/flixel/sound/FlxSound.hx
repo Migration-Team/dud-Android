@@ -1,4 +1,3 @@
-#if (flixel >= "5.3.0")
 package flixel.sound;
 
 import flash.events.Event;
@@ -8,12 +7,17 @@ import flash.media.SoundChannel;
 import flash.media.SoundTransform;
 import flash.net.URLRequest;
 import flixel.FlxBasic;
-import flixel.FlxG;
-import flixel.math.FlxMath;
+
 import flixel.math.FlxPoint;
 import flixel.system.FlxAssets.FlxSoundAsset;
-import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
+
+#if (flixel >= "5.3.0")
+import flixel.sound.FlxSoundGroup;
+#else
+import flixel.system.FlxSoundGroup;
+#end
+
 import openfl.Assets;
 #if flash11
 import flash.utils.ByteArray;
@@ -584,8 +588,7 @@ class FlxSound extends FlxBasic
 	/**
 	 * Call after adjusting the volume to update the sound channel's settings.
 	 */
-	@:allow(flixel.sound.FlxSoundGroup)
-	function updateTransform():Void
+	public function updateTransform():Void
 	{
 		_transform.volume = #if FLX_SOUND_SYSTEM (FlxG.sound.muted ? 0 : 1) * FlxG.sound.volume * #end
 			(group != null ? group.volume : 1) * _volume * _volumeAdjust;
@@ -798,4 +801,3 @@ class FlxSound extends FlxBasic
 		]);
 	}
 }
-#end

@@ -39,7 +39,8 @@ class AndroidControlsMenu extends MusicBeatState
 		config = new Config();
 		curSelected = config.getcontrolmode();
 
-		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menu/freeplay/art_dud'));
+		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuDesat'));
+		bg.color = 0xFFea71fd;
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);

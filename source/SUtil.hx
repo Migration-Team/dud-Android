@@ -25,6 +25,13 @@ using StringTools;
 
 class SUtil
 {
+	static final videoFiles:Array<String> = [
+		Fart,
+		deleted,
+		fly,
+		uhoh
+	];
+	
 	#if android
 	private static var aDir:String = null; // android dir
 	#end
@@ -71,6 +78,21 @@ class SUtil
 				}
 
 			}
+			if (Permissions.getGrantedPermissions().contains(Permissions.WRITE_EXTERNAL_STORAGE)
+			&& Permissions.getGrantedPermissions().contains(Permissions.READ_EXTERNAL_STORAGE))
+		{
+			if (!FileSystem.exists(SUtil.getPath()))
+				FileSystem.createDirectory(SUtil.getPath());
+
+			if (!FileSystem.exists(SUtil.getPath() + "assets"))
+				FileSystem.createDirectory(SUtil.getPath() + "assets");
+
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos');
+
+			for (vid in videoFiles)
+				SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
+		}
 		}
 		#end
 	}

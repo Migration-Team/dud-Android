@@ -166,7 +166,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 			if(usesCheckbox)
 			{
-				if(controls.ACCEPT if !android || FlxG.mouse.justPressed #end)
+				if(controls.ACCEPT #if !android || FlxG.mouse.justPressed #end)
 				{
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					curOption.setValue((curOption.getValue() == true) ? false : true);

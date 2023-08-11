@@ -391,7 +391,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		GameOverSubstate.resetVariables();
-		var songName:String = Paths.formatToSongPath(SONG.song);
+		var songName:String = SUtil.getPath() + Paths.formatToSongPath(SONG.song);
 
 		curStage = SONG.stage;
 		//trace('stage is: ' + curStage);

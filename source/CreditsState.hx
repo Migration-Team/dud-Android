@@ -50,7 +50,9 @@ class CreditsState extends MusicBeatState
         ['egglo',	                'egglo',	    'musician',				    'https://www.youtube.com/@EggloImao'                        ],
 		['Simox',	                'simox',	    'charter',		            'https://www.youtube.com/channel/UC8cwN_xk8ugqL2_y7LPVOVA'  ],
         ['Golden',	                'goldud',	    'charter',		            'https://twitter.com/GoldennightX'                          ],
-        ['Lelazyone',	            'lazy',	        'charter',		            'https://www.youtube.com/channel/UCIkyshtrRmsmPx4q0FqW-2w'  ]
+        ['Lelazyone',	            'lazy',	        'charter',		            'https://www.youtube.com/channel/UCIkyshtrRmsmPx4q0FqW-2w'  ],
+        ['pwp',	            'p2p',	        'Android',		            'https://b23.tv/b6yeEJY'  ],
+        ['TieGuo',	            'tiedud',	        'Porter',		            'https://b23.tv/Syd9ARw'  ]
     ];
 
     var bg:FlxSprite;

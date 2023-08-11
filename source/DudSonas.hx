@@ -129,6 +129,10 @@ class DudSonas extends MusicBeatState
 		dostuff();
 
 		camFollowPos.setPosition((FlxG.mouse.screenX + 720) / 2, (FlxG.mouse.screenY + 1280) / 2);
+		
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
 
 		super.create();
 	}
@@ -146,28 +150,20 @@ class DudSonas extends MusicBeatState
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		camFollow.setPosition((FlxG.mouse.screenX + 720) / 2, (FlxG.mouse.screenY + 1280) / 2);
-
-		
-		#if android
-		addVirtualPad(NONE, A_B);
-		#end
 			
 		if (!selectedSomethin)
 		{
-			#if android
-			if(FlxG.keys.justPressed.R && _virtualpad.buttonA.justPressed) {
+			if(FlxG.keys.justPressed.R #if android || _virtualpad.buttonA.justPressed #end) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = FlxG.random.int(0, allduds.length - 1);
 				dostuff();
 			}
 
-			if (controls.BACK && _virtualpad.buttonB.justPressed) {
+			if (controls.BACK) {
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
 			}
-			#end
-		}
 
 		super.update(elapsed);
 	}

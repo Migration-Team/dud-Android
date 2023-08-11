@@ -147,19 +147,26 @@ class DudSonas extends MusicBeatState
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		camFollow.setPosition((FlxG.mouse.screenX + 720) / 2, (FlxG.mouse.screenY + 1280) / 2);
 
+		
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
+			
 		if (!selectedSomethin)
 		{
-			if(FlxG.keys.justPressed.R) {
+			#if android
+			if(FlxG.keys.justPressed.R && _virtualpad.buttonA.justPressed) {
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = FlxG.random.int(0, allduds.length - 1);
 				dostuff();
 			}
 
-			if (controls.BACK) {
+			if (controls.BACK && _virtualpad.buttonB.justPressed) {
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new MainMenuState());
 			}
+			#end
 		}
 
 		super.update(elapsed);

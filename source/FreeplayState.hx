@@ -155,7 +155,7 @@ class FreeplayState extends MusicBeatState
 		add(top);
 
 		freeplayartstuff = new FlxSprite();
-		freeplayartstuff.loadGraphic(Paths.image('assets/images/menu/freeplay/art_' + songs[curSelected].songName.toLowerCase() + '.png'));
+		freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase() + '.png'));
 		add(freeplayartstuff);
 		freeplayartstuff.scrollFactor.set(0.05, 0.05);
 		freeplayartstuff.antialiasing = ClientPrefs.globalAntialiasing;

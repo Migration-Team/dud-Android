@@ -118,7 +118,7 @@ class DudSonas extends MusicBeatState
 		}
 
 		var scoreText:FlxText;
-		scoreText = new FlxText(20, 35, 0, "Press R to get a new dud", 36);
+		scoreText = new FlxText(20, 35, 0, "Press A to get a new dud", 36);
 		scoreText.setFormat(Paths.font("phantommuff.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.borderSize = 1.25;
 		scoreText.scrollFactor.set(0.05, 0.05);

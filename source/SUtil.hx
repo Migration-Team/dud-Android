@@ -26,10 +26,10 @@ using StringTools;
 class SUtil
 {
 	static final videoFiles:Array<String> = [
-		Fart,
-		deleted,
-		fly,
-		uhoh
+		"Fart",
+		"deleted",
+		"fly",
+		"uhoh"
 	];
 	
 	#if android

@@ -37,6 +37,8 @@ class Main extends Sprite
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
+	public static var path:String = System.applicationStorageDirectory;
+	
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());

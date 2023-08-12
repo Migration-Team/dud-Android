@@ -58,6 +58,11 @@ class HitboxSettingsSubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
+		
+		var option:Option = new Option('Flip Hitbox',
+			'who made note reversed', 'sbHitbox', 'bool',
+			false);
+		addOption(option);
 
 		super();
 	}

@@ -34,10 +34,10 @@ class FlxHitbox extends FlxSpriteGroup {
 		
 		if (ClientPrefs.sbHitbox)
 		{
-			hitbox.add(add(buttonLeft = createhitbox(960, 0, "left")));
+			hitbox.add(add(buttonLeft = createhitbox(0, 0, "left")));
 			hitbox.add(add(buttonDown = createhitbox(640, 0, "down")));
 			hitbox.add(add(buttonUp = createhitbox(320, 0, "up")));
-			hitbox.add(add(buttonRight = createhitbox(0, 0, "right")));
+			hitbox.add(add(buttonRight = createhitbox(960, 0, "right")));
 		} else {
 			hitbox.add(add(buttonLeft = createhitbox(0, 0, "left")));
 			hitbox.add(add(buttonDown = createhitbox(320, 0, "down")));

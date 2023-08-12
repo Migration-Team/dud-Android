@@ -418,7 +418,7 @@ class FreeplayState extends MusicBeatState
 			}
 	
 			if(oldsong != songs[curSelected].songName) {
-				freeplayartstuff.loadGraphic('assets/images/menu/freeplay/art_' + songs[curSelected].songName.toLowerCase());
+				freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase()));
 				oldsong = songs[curSelected].songName;
 			}
 			freeplayartstuff.updateHitbox();

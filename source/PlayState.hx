@@ -500,7 +500,7 @@ class PlayState extends MusicBeatState
 			SONG.gfVersion = 'gf'; //Fix for the Chart Editor
 		}
 
-		if (!hide_girlfriend)
+		if (!stageData.hide_girlfriend)
 		{
 			gf = new Character(0, 0, gfVersion);
 			startCharacterPos(gf);

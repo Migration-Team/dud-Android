@@ -72,7 +72,7 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
-import import VideoHandler as MP4Handler;;
+import VideoHandler as MP4Handler;
 #end
 
 using StringTools;

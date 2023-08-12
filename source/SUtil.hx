@@ -89,9 +89,10 @@ class SUtil
 
 			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos'))
 				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos');
-
-			for (vid in videoFiles)
-				SUtil.copyContent(Paths.video(vid), SUtil.getPath() + Paths.video(vid));
+			
+			if (!FileSystem.exists(SUtil.getPath() + 'assets/videos/Fart.mp4'))
+				FileSystem.createDirectory(SUtil.getPath() + 'assets/videos/Fart.mp4');
+			
 		}
 		}
 		#end

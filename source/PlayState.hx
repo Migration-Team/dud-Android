@@ -391,7 +391,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		GameOverSubstate.resetVariables();
-		var songName:String = Paths.formatToSongPath(SONG.song);
+		var songName:String = SUtil.getPath() + Paths.formatToSongPath(SONG.song);
 
 		curStage = SONG.stage;
 		//trace('stage is: ' + curStage);
@@ -494,10 +494,10 @@ class PlayState extends MusicBeatState
 				addCharacterToList('dud2', 1);
 		}
 
-		var gfVersion:String = SONG.gfVersion;
+		var gfVersion:String = null;
 		if(gfVersion == null || gfVersion.length < 1)
 		{
-			SONG.gfVersion = 'gf'; //Fix for the Chart Editor
+			SONG.gfVersion = 'null'; //Fix for the Chart Editor
 		}
 
 		if (!stageData.hide_girlfriend)
@@ -942,7 +942,7 @@ class PlayState extends MusicBeatState
 		#if VIDEOS_ALLOWED
 		inCutscene = true;
 
-		var filepath:String = Paths.video(name);
+		var filepath:String = SUtil.getPath() + Paths.video(name);
 		#if sys
 		if(!FileSystem.exists(filepath))
 		#else

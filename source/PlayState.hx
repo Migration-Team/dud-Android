@@ -1752,14 +1752,17 @@ class PlayState extends MusicBeatState
 			var random:Array<Dynamic> = ['YOU DIRTY CHEATER', 'L', "DON'T CHEAT", 'cheating is BAD', 'dud knows your ip, run as fast as you can'];
 			trace(random[FlxG.random.int(0, random.length)]);
 		}
-
-		if (controls.PAUSE && #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
+		#if android
+		if (FlxG.android.justReleased.BACK && startedCountdown && canPause)
+		#else
+		if((controls.PAUSE && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', [], false);
 			if(ret != FunkinLua.Function_Stop) {
 				openPauseMenu();
 			}
 		}
+		#end
 
 		if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
 		{

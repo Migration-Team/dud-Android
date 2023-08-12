@@ -1,5 +1,6 @@
 package;
 
+import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.effects.FlxTrail;
@@ -96,12 +97,12 @@ class Character extends FlxSprite
 			//case 'your character name in case you want to hardcode them instead':
 
 			default:
-				var characterPath:String = SUtil.getPath() + 'assets/characters/' + curCharacter + '.json';
+				var characterPath:String = 'characters/' + curCharacter + '.json';
 
 				#if MODS_ALLOWED
 				var path:String = Paths.modFolders(characterPath);
 				if (!FileSystem.exists(path)) {
-					path = Paths.getPreloadPath(characterPath);
+					path = SUtil.getPath() + Paths.getPreloadPath(characterPath);
 				}
 
 				if (!FileSystem.exists(path))
@@ -126,14 +127,14 @@ class Character extends FlxSprite
 				//texture
 				#if MODS_ALLOWED
 				var modTxtToFind:String = Paths.modsTxt(json.image);
-				var txtToFind:String = SUtil.getPath() + Paths.getPath('images/' + json.image + '.txt', TEXT);
+				var txtToFind:String = Paths.getPath('images/' + json.image + '.txt', TEXT);
 				
 				//var modTextureToFind:String = Paths.modFolders("images/"+json.image);
 				//var textureToFind:String = Paths.getPath('images/' + json.image, new AssetType();
 				
-				if (FileSystem.exists(modTxtToFind) || FileSystem.exists(txtToFind) || Assets.exists(txtToFind))
+				if (FileSystem.exists(modTxtToFind) || FileSystem.exists(SUtil.getPath() + txtToFind) || Assets.exists(txtToFind))
 				#else
-				if (Assets.exists(SUtil.getPath() + Paths.getPath('images/' + json.image + '.txt', TEXT)))
+				if (Assets.exists(Paths.getPath('images/' + json.image + '.txt', TEXT)))
 				#end
 				{
 					spriteType = "packer";
@@ -154,11 +155,16 @@ class Character extends FlxSprite
 					spriteType = "texture";
 				}
 
-				switch (spriteType) {
+				switch (spriteType){
+					
 					case "packer":
 						frames = Paths.getPackerAtlas(json.image);
+					
 					case "sparrow":
 						frames = Paths.getSparrowAtlas(json.image);
+					
+					case "texture":
+						frames = AtlasFrameMaker.construct(json.image);
 				}
 				imageFile = json.image;
 
@@ -370,6 +376,7 @@ class Character extends FlxSprite
 				animationNotes.push(songNotes);
 			}
 		}
+		TankmenBG.animationNotes = animationNotes;
 		animationNotes.sort(sortAnims);
 	}
 

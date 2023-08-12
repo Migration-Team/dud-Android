@@ -155,7 +155,7 @@ class FreeplayState extends MusicBeatState
 		add(top);
 
 		freeplayartstuff = new FlxSprite();
-		freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase() + '.png'));
+		freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase()));
 		add(freeplayartstuff);
 		freeplayartstuff.scrollFactor.set(0.05, 0.05);
 		freeplayartstuff.antialiasing = ClientPrefs.globalAntialiasing;
@@ -166,8 +166,8 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			var songText:FlxSprite = new FlxSprite(10, 310 + (i * 150));
-			songText.loadGraphic(Paths.image('menu/freeplay/text_' + songs[i].songName.toLowerCase() + '.png'));
-			freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[i].songName.toLowerCase() + '.png'));
+			songText.loadGraphic(Paths.image('menu/freeplay/text_' + songs[i].songName.toLowerCase()));
+			freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[i].songName.toLowerCase()));
 			songText.ID = i;
 			grpSongs.add(songText);
 			songText.scrollFactor.set(0.05, 0.05);
@@ -175,7 +175,7 @@ class FreeplayState extends MusicBeatState
 			songText.updateHitbox();
 		}
 
-		freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase() + '.png'));
+		freeplayartstuff.loadGraphic(Paths.image('menu/freeplay/art_' + songs[curSelected].songName.toLowerCase()));
 
 		WeekData.setDirectoryFromWeek();
 
@@ -418,7 +418,7 @@ class FreeplayState extends MusicBeatState
 			}
 	
 			if(oldsong != songs[curSelected].songName) {
-				freeplayartstuff.loadGraphic('assets/images/menu/freeplay/art_' + songs[curSelected].songName.toLowerCase() + '.png');
+				freeplayartstuff.loadGraphic('assets/images/menu/freeplay/art_' + songs[curSelected].songName.toLowerCase());
 				oldsong = songs[curSelected].songName;
 			}
 			freeplayartstuff.updateHitbox();

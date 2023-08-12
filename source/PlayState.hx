@@ -72,7 +72,7 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
-import VideoHandler;
+import import VideoHandler as MP4Handler;;
 #end
 
 using StringTools;
@@ -391,7 +391,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		GameOverSubstate.resetVariables();
-		var songName:String = SUtil.getPath() + Paths.formatToSongPath(SONG.song);
+		var songName:String = Paths.formatToSongPath(SONG.song);
 
 		curStage = SONG.stage;
 		//trace('stage is: ' + curStage);
@@ -494,13 +494,13 @@ class PlayState extends MusicBeatState
 				addCharacterToList('dud2', 1);
 		}
 
-		var gfVersion:String = null;
+		var gfVersion:String = SONG.gfVersion;
 		if(gfVersion == null || gfVersion.length < 1)
 		{
-			SONG.gfVersion = 'null'; //Fix for the Chart Editor
+			SONG.gfVersion = 'gf'; //Fix for the Chart Editor
 		}
 
-		if (!stageData.hide_girlfriend)
+		if (!hide_girlfriend)
 		{
 			gf = new Character(0, 0, gfVersion);
 			startCharacterPos(gf);
@@ -676,7 +676,7 @@ class PlayState extends MusicBeatState
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
-
+		
 		#if android
 		addAndroidControls();
 		androidc.visible = false;
@@ -954,7 +954,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		var video:VideoHandler = new VideoHandler();
+		var video:MP4Handler = new MP4Handler();
 		video.playVideo(filepath);
 		video.finishCallback = function()
 		{
@@ -1752,7 +1752,8 @@ class PlayState extends MusicBeatState
 			var random:Array<Dynamic> = ['YOU DIRTY CHEATER', 'L', "DON'T CHEAT", 'cheating is BAD', 'dud knows your ip, run as fast as you can'];
 			trace(random[FlxG.random.int(0, random.length)]);
 		}
-		if((controls.PAUSE #if android || FlxG.android.justReleased.BACK #end) && startedCountdown && canPause)
+
+		if ((controls.PAUSE #if android || FlxG.android.justReleased.BACK #end) && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', [], false);
 			if(ret != FunkinLua.Function_Stop) {
@@ -2523,10 +2524,6 @@ class PlayState extends MusicBeatState
 				return;
 			}
 		}
-		
-		#if android
-		androidc.visible = false;
-		#end
 
 		timeBarBG.visible = false;
 		timeBar.visible = false;
@@ -2536,6 +2533,10 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+		
+		#if android
+		androidc.visible = false;
+		#end
 
 		deathCounter = 0;
 		seenCutscene = false;

@@ -478,7 +478,6 @@ class PlayState extends MusicBeatState
 				effect.scale.x = 3;
 				effect.scale.y = 3;
 			case 'setup':
-				SONG.player2 = 'green';
 				var room:BGSprite = new BGSprite('room', -400, -850, 1, 1);
 				add(room);
 
@@ -492,14 +491,13 @@ class PlayState extends MusicBeatState
 
 		switch(SONG.song.toLowerCase()) {
 			case 'dud':
-				SONG.player2 = 'dud';
 				addCharacterToList('dud2', 1);
 		}
 
-		var gfVersion:String = SONG.gfVersion;
+		var gfVersion:String = null;
 		if(gfVersion == null || gfVersion.length < 1)
 		{
-			SONG.gfVersion = 'gf'; //Fix for the Chart Editor
+			SONG.gfVersion = 'null'; //Fix for the Chart Editor
 		}
 
 		if (!stageData.hide_girlfriend)
